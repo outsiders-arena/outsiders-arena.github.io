@@ -26,7 +26,10 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    $("#greetings").append(" " + message + "");
+    console.log(message.length);
+    let messageString = message.toString().slice(6, message.length-2);
+    $("#greetings").html("");
+    $("#greetings").append(`Greetings, ${messageString}!`);
 }
 
 
