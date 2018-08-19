@@ -5,28 +5,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" media="screen"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" media="screen"/>
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet' />
     <link rel="stylesheet" href="./resources/css/styles.css" type="text/css" />
     <script type="text/javascript"></script>
    	<script src="./resources/js/chat.js"></script>
 
 </head>
-<body>
-    <div class="logo">
-        <a href="#">OUTSIDERS ARENA</a>
-    </div>
-    <div class="header">
-            <div id="greetings"><h3>STUFF</h3></div>
-        <div class="filler"><h3>STUFF</h3></div>
-        <div class="filler"><h3>STUFF</h3></div>
-        <div class="filler"><h3>STUFF</h3></div>
-    </div>
+<body id="bootstrap-overrides">
+	<div class="banner-container">
+		<div class="logo">
+			<a href="#">OUTSIDERS ARENA</a>
+		</div>
+		<div class="header">
+				<div><h3 id="greetings">STUFF</h3></div>
+			<div class="filler"><h3>STUFF</h3></div>
+			<div class="filler"><h3>STUFF</h3></div>
+			<div class="filler"><h3>STUFF</h3></div>
+		</div>
+	</div>
     <div class="connect">
             <a class ="battleButton" href="./resources/battle.html" target="_blank">BATTLE</a>
-            <input id="name" placeholder="Name"></input>
-            <button onclick="sendName();" id="send">Send</button>
+            <input id="name" placeholder="Name" maxlength="20"></input>
+            <button onclick="sendName()" id="send">Send</button>
         </div>
     <div class="sidebar">
         <button>STARTPAGE</button>
