@@ -32,7 +32,7 @@ body {
 }
 
 .logo > a:hover {
-    color: #982d57;
+    color:  #660033;
 }
 
 .header {
@@ -40,10 +40,24 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: #982d57;
+    background-color:  #660033;
     border-bottom: 3px solid black;
     grid-column: 5 / 13;
     grid-row: 1 / 5;
+}
+.header > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
+    height: 75px;
+    border: 5px solid #008CBA;
+    border-radius: 5px;
+    color: #008CBA;
+    font-family: 'Aclonica';
+    cursor: pointer;
 }
 .sidebar {
     display: flex;
@@ -80,7 +94,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #982d57;
+    background-color:  #660033;
     grid-column: 1 / 4;
     grid-row: 5 / 7;
     border-right: 3px solid black;
@@ -125,18 +139,6 @@ body {
 }
 #send:focus {
     outline: 0;
-}
-.header > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    margin: 0 20px;
-    height: 75px;
-    border: 2px solid black;
-    font-family: 'Aclonica';
-    cursor: pointer;
 }
 .main {
     display: flex;
