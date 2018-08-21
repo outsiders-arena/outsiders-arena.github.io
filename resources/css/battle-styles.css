@@ -26,6 +26,10 @@ body {
     grid-column: 2 / 5;
     grid-row: 4 / 18;
 }
+.empty-space {
+	grid-column: 10 / 16;
+	grid-row: 4 / 20;
+}
 .enemy-team { 
     display: flex;
     flex-direction: column;
@@ -72,28 +76,25 @@ body {
     border: 2px solid black;
     background-color: #d2b48c;
 }
-.enemy-ability-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    position: absolute;
-    top: 15%;
-    right: 100%;
-    height: 70%;
-    width: 300%;
+.healthbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+    top: 100%;
+    right: 5%;
+    height: 15%;
+    width: 90%;
     border: 2px solid black;
-    background-color: #d2b48c;
+    background-color: green;
+	color: #eee;
+}
+.healthbar p {
+	height: 50%;
 }
 .ally-ability {
     height: 80%;
     width: 20%;
     border: 1px solid black;
     background-color: dodgerblue;
-}
-.enemy-ability {
-    height: 80%;
-    width: 20%;
-    border: 1px solid black;
-    background-color: orangered;
 }

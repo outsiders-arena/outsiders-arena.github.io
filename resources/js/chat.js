@@ -27,8 +27,7 @@ function sendName() {
 
 function showGreeting(message) {
     $("#greetings").html("");
-    const greeting = `Greetings, ${message.slice(6, message.length-2)}!`;
-    $("#greetings").append(greeting.toUpperCase());
+    $("#greetings").append(`Greetings, ${message.slice(6, message.length-2)}!`);
 }
 
 
