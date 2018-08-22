@@ -26,7 +26,8 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    $("#greetings").append(" " + message + "");
+    $("#greetings").html("");
+    $("#greetings").append(`Greetings, ${message.slice(6, message.length-2)}!`);
 }
 
 

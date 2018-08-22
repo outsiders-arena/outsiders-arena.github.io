@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: grid;
+    background-color: #222;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    height: 100%;
+    width: 100%;
+}
+
+.banner-container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	background: linear-gradient(to left, #008CBA, #008CBA, #008CBA, #222, #222, #222);
+	background-size: 250%;
+	color: #222;
+	border-color: #222;
+	grid-column: 1 / -1;
+	grid-row: 1 / 5;
+	animation: shadowDance 2s infinite paused;
+}
+.banner-container:hover {
+	animation-play-state: running;
+}
+@keyframes shadowDance {
+	0% {
+		background-position: 100% 50%;
+		color: #222;
+		border-color: #222;
+	} 50% {
+		background-position: 0% 50%;
+		color: #6A129B;
+		border-color: #6A129B;
+	} 100% {
+		background-position: 100% 50%;
+		color: #222;
+		border-color: #222;
+	}
+}
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+	background-size: 250%;
+	background-position: 100% 50%;
+    grid-column: 1 / 5;
+    grid-row: 1 / 5;
+    font-family: 'Aclonica';
+	color: inherit;
+}
+.logo > a {
+	color: inherit;
+    text-decoration: none;
+    font-size: 2.5em;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background:  transparent;
+    grid-column: 5 / 13;
+    grid-row: 1 / 5;
+}
+.header > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
+    height: 75px;
+    border: 5px solid;
+	border-color: inherit;
+    color: inherit;
+    cursor: pointer;
+    font-weight: bold;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #33533b;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    grid-column: 1 / 4;
+    grid-row: 7 / 21;
+}
+.sidebar > button {
+    flex-grow: 1;
+    margin: 20px 0;
+    padding: 5px 30px;
+    background-color: #008CBA;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 1px 2px 1px 1px black;
+    cursor: pointer;
+    
+}
+.sidebar > button:active {
+    box-shadow: inset 2px 1px 0px black;
+}
+.sidebar > button:focus {
+    outline: 0;
+}
+.connect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color:  #6A129B;
+    grid-column: 1 / 4;
+    grid-row: 5 / 7;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+	border-top: 3px solid black;
+    padding: 10px;
+    font-weight: bold;
+}
+.battleButton {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    box-shadow: 1px 2px 1px 1px black;
+    text-decoration: none;
+    color: white;
+    background-color: #008CBA;
+    padding: 5px;
+}
+.battleButton:active {
+    box-shadow: inset 2px 1px 0px black;
+    outline: 0;
+}
+.battleButton:focus {
+    outline: 0;
+}
+.battleButton:hover {
+    color: white;
+    background-color: #008CBA;
+    text-decoration: none;
+}
+#send {
+    color: white;
+    background-color: #008CBA;
+    border: 1px solid black;
+    padding: 5px;
+    box-shadow: 1px 2px 1px 1px black;
+}
+#send:active {
+    box-shadow: inset 2px 1px 0px black;
+}
+#send:focus {
+    outline: 0;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 4 / 13;
+    grid-row: 5 / 21;
+	border-top: 3px solid black;
+    background-color: #222;
+}
+.main-filler {
+    background-color: #ddd;
+    color: #333333;
+    padding: 10px;
+    text-align: justify;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 75%;
+    height: 150px;
+}
