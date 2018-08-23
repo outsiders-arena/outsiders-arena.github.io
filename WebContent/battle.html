@@ -50,16 +50,16 @@
 		</div>
 	</div>
 	<div class="empty-space">
-				Arena ID:
+
+		Arena ID:
 		<span id="arenaId">
 		</span>
-		<div id="displayName">
-			Display Name:
-		</div>
+		Player ID:
+		<span id="playerId">
+		</span>
 		
 		<div>
 			<input id="displayNameInput" placeholder="enter your display name">
-			<input id="playerIdInput" placeholder="enter your playerId (if you have one)">
 			<input id="avatarUrlInput" placeholder="enter an avatar URL">
 			<button id="connectButton" onclick="sendConnectRequest()">
 				CONNECT
@@ -79,7 +79,6 @@
 
 		
 		<div>
-			<input id="arenaIdInput" placeholder="enter your opponent's arenaId">
 			<input id="playerIdMatchMakingInput" placeholder="enter your opponent's playerId">
 			<button id="findBattle" onclick="findBattle()">
 				Find Battle
