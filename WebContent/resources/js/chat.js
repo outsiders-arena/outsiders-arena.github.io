@@ -1,7 +1,12 @@
+const PROD_URL = "";
+const STAGE_URL = "66.242.90.163:8171";
+const DEV_URL = "localhost:8817";
+const URL = DEV_URL;
+
 var ws = null;
 
 function connect() {
-	ws = new WebSocket('ws://66.242.90.163:8171/chat');
+	ws = new WebSocket('ws://'+ URL +'/chat');
 	ws.onmessage = function(data){
 		console.log(data);
 		showGreeting(data.data);

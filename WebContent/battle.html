@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Outsiders Arena</title>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -9,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" media="screen"/>
 <script type="text/javascript"></script>
 <script src="./resources/js/battle.js"></script>
+
 <link rel="stylesheet" type="text/css" href="./resources/css/battle-styles.css" />
 
 </head>
@@ -52,17 +52,17 @@
 	<div class="empty-space">
 
 		Arena ID:
-		<span id="arenaId">
-		</span>
+		<p id="arenaId">
+		</p>
 		Player ID:
-		<span id="playerId">
-		</span>
+		<p id="playerId">
+		</p>
 		
 		<div>
 			<input id="displayNameInput" placeholder="enter your display name">
 			<input id="avatarUrlInput" placeholder="enter an avatar URL">
 			<button id="connectButton" onclick="sendConnectRequest()">
-				CONNECT
+				CREATE PLAYER
 			</button>
 		</div>
 		
@@ -79,9 +79,9 @@
 
 		
 		<div>
-			<input id="playerIdMatchMakingInput" placeholder="enter your opponent's playerId">
+			<input id="playerNameMatchMakingInput" placeholder="enter your opponent's displayName">
 			<button id="findBattle" onclick="findBattle()">
-				Find Battle
+				FIND BATTLE
 			</button>
 		</div>
 		
