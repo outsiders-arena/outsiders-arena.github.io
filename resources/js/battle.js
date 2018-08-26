@@ -14,13 +14,12 @@ function connectByPlayerId() {
 }
 
 function connectByArenaId(id) {
-	var playerId = Math.random().toString().substring(2, 10);
 	ws = new WebSocket('ws://66.242.90.163:8171/arena/' + id);
 	$("#arenaId").append(id);
 	console.log("Connected to Friend!");
 	console.log(ws);
 	handleMessage();
-	setTimeout(sendMatchMakingMessage, 5000);
+	setTimeout(sendMatchMakingMessage, 2500);
 }
 
 function connect() {
@@ -30,7 +29,7 @@ function connect() {
 	console.log("Connected");
 	console.log(ws);
 	handleMessage();
-	setTimeout(sendMatchMakingMessage, 5000);
+	setTimeout(sendMatchMakingMessage, 2500);
 }
 
 function disconnect() {
@@ -112,9 +111,9 @@ function handleTurnEnd(msg) {
 // ------ SEND MESSAGES
 
 function sendMatchMakingMessage() {
-	var chars = $("#chars").val()
+	const chars = [...document.getElementsByClassName("chars")].map(x => x.value);
 	console.log(chars);
-	var msg = JSON.stringify({
+	var msg = {
 		type: "MATCH_MAKING",
 		char1: chars[0],
 		char2: chars[1],
@@ -122,9 +121,29 @@ function sendMatchMakingMessage() {
 		playerId: $("#playerIdInput").val().toString(),
 		opponentId: $("#playerIdMatchMakingInput").val().toString(),
 		arenaId: $("#arenaIdInput").val().toString()
-	});
+	};
+	handlePortraits(msg.char1, msg.char2, msg.char3);
 	console.log(msg);
-	ws.send(msg);
+	ws.send(JSON.stringify(msg));
+}
+
+const handlePortraits = (...arguments) => {
+	const frames = document.getElementsByClassName("ally");
+	const backgrounds = {
+		"0": "https://i.imgur.com/qh2cjpd.jpg",
+		"1": "https://i.imgur.com/yvQeY2q.png",
+		"2": "https://i.imgur.com/YCBrPWg.png",
+		"3": "https://i.imgur.com/uPWgaVl.jpg",
+		"4": "https://i.imgur.com/y2pJyrY.jpg"
+	};
+	for (let i = 0; i < frames.length; i++){
+		const portrait = document.createElement("img");
+		portrait.setAttribute("src", backgrounds[arguments[i]]);
+		portrait.style.maxHeight = "100%";
+		portrait.style.maxWidth = "100%";
+		frames[i].removeChild(frames[i].childNodes[1]);
+		frames[i].appendChild(portrait);
+	}
 }
 
 function sendTurnEnd() {

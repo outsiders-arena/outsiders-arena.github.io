@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Outsiders Arena</title>
+<title>Battle - Outsiders Arena</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
@@ -15,6 +15,13 @@
 	<div class="resource-manager"></div>
 	<div class="ally-team">
 		<div class="ally">
+			<select class="chars">
+				<option value="0">Alex Drake</option>
+				<option value="1">Fainne Uron</option>
+				<option value="2">Geddy Splintwalker</option>
+				<option value="3">Hollyanna Knox</option>
+				<option value="4">Shinzo Katetsu</option>
+			</select>
 			<div class="healthbar">
 				<p>100/100</p>
 			</div>
@@ -26,6 +33,13 @@
 			</div>
 		</div>
 		<div class="ally">
+			<select class="chars">
+				<option value="0">Alex Drake</option>
+				<option value="1">Fainne Uron</option>
+				<option value="2">Geddy Splintwalker</option>
+				<option value="3">Hollyanna Knox</option>
+				<option value="4">Shinzo Katetsu</option>
+			</select>
 			<div class="healthbar">
 				<p>100/100</p>
 			</div>
@@ -37,6 +51,13 @@
 			</div>
 		</div>
 		<div class="ally">
+			<select class="chars">
+				<option value="0">Alex Drake</option>
+				<option value="1">Fainne Uron</option>
+				<option value="2">Geddy Splintwalker</option>
+				<option value="3">Hollyanna Knox</option>
+				<option value="4">Shinzo Katetsu</option>
+			</select>
 			<div class="healthbar">
 				<p>100/100</p>
 			</div>
@@ -64,19 +85,7 @@
 				CONNECT
 			</button>
 		</div>
-		
-		<div>
-			<select id="chars" multiple>
-				<option value="0">Alex</option>
-				<option value="1">Fainne</option>
-				<option value="2">Geddy</option>
-				<option value="3">Hollyanna</option>
-				<option value="4">Shinzo</option>
-			</select>
-		</div>
-		
-
-		
+		<br />
 		<div>
 			<input id="arenaIdInput" placeholder="enter your opponent's arenaId">
 			<input id="playerIdMatchMakingInput" placeholder="enter your opponent's playerId">
