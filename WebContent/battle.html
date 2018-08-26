@@ -11,7 +11,32 @@
 
 </head>
 <body id="bootstrap-override">
-	<div class="resource-manager"></div>
+	<div class="resource-manager">
+		<div>
+			Arena ID:
+			<span id="arenaId">
+			</span>
+			<br />
+			Player ID:
+			<span id="playerId">
+			</span>
+		</div>
+			
+		<div>
+			<input id="displayNameInput" placeholder="Display Name">
+			<input id="avatarUrlInput" placeholder="Avatar URL">
+			<button id="connectButton" onclick="sendConnectRequest()">
+				Connect
+			</button>
+		</div>
+		<br />
+		<div>
+			<input id="playerIdMatchMakingInput" placeholder="Opponent's Player ID">
+			<button id="findBattle" onclick="findBattle()">
+				Find Battle
+			</button>
+		</div>
+	</div>
 	<div class="ally-team">
 		<div class="ally">
 			<select class="chars">
@@ -67,37 +92,6 @@
 				<div class="ally-ability"></div>
 			</div>
 		</div>
-	</div>
-	<div class="empty-space">
-
-		Arena ID:
-		<span id="arenaId">
-		</span>
-		Player ID:
-		<span id="playerId">
-		</span>
-		
-		<div>
-			<input id="displayNameInput" placeholder="enter your display name">
-			<input id="avatarUrlInput" placeholder="enter an avatar URL">
-			<button id="connectButton" onclick="sendConnectRequest()">
-				CONNECT
-			</button>
-		</div>
-		<br />
-		<div>
-			<input id="playerIdMatchMakingInput" placeholder="enter your opponent's playerId">
-			<button id="findBattle" onclick="findBattle()">
-				Find Battle
-			</button>
-		</div>
-		
-		<div id="arenaOutput">
-
-
-
-		</div>
-
 	</div>
 	<div class="enemy-team">
 		<div class="enemy">

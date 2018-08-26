@@ -13,6 +13,9 @@ body {
     grid-template-rows: repeat(20, 1fr);
 }
 .resource-manager {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
     background-color: darkgoldenrod;
     grid-column: 5 / 17;
     grid-row: 1 / 3;
