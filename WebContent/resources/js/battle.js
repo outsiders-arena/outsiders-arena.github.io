@@ -87,6 +87,25 @@ function sendConnectRequest() {
 	});
 }
 
+const handlePortraits = (...arguments) => {
+	const frames = document.getElementsByClassName("ally");
+	const backgrounds = {
+		"0": "https://i.imgur.com/qh2cjpd.jpg",
+		"1": "https://i.imgur.com/yvQeY2q.png",
+		"2": "https://i.imgur.com/YCBrPWg.png",
+		"3": "https://i.imgur.com/uPWgaVl.jpg",
+		"4": "https://i.imgur.com/y2pJyrY.jpg"
+	};
+	for (let i = 0; i < frames.length; i++){
+		const portrait = document.createElement("img");
+		portrait.setAttribute("src", backgrounds[arguments[i]]);
+		portrait.style.maxHeight = "100%";
+		portrait.style.maxWidth = "100%";
+		frames[i].removeChild(frames[i].childNodes[1]);
+		frames[i].appendChild(portrait);
+	}
+}
+
 function afterLogin(result) {
 	$("#playerId").append(result.id);
 	console.log(result);
@@ -138,25 +157,6 @@ function sendMatchMakingMessage() {
 	ws.send(JSON.stringify(msg));
 }
 
-const handlePortraits = (...arguments) => {
-	const frames = document.getElementsByClassName("ally");
-	const backgrounds = {
-		"0": "https://i.imgur.com/qh2cjpd.jpg",
-		"1": "https://i.imgur.com/yvQeY2q.png",
-		"2": "https://i.imgur.com/YCBrPWg.png",
-		"3": "https://i.imgur.com/uPWgaVl.jpg",
-		"4": "https://i.imgur.com/y2pJyrY.jpg"
-	};
-	for (let i = 0; i < frames.length; i++){
-		const portrait = document.createElement("img");
-		portrait.setAttribute("src", backgrounds[arguments[i]]);
-		portrait.style.maxHeight = "100%";
-		portrait.style.maxWidth = "100%";
-		frames[i].removeChild(frames[i].childNodes[1]);
-		frames[i].appendChild(portrait);
-	}
-}
-
 function sendTurnEnd() {
     ws.send(
 		JSON.stringify({
@@ -183,6 +183,29 @@ function sendEnergyTrade() {
     );
 }
 
+// ------ EVENT LISTENERS
+
+const handleEventListeners = {
+	preventMultipleSelection: (function() {
+		const selectors = [...document.getElementsByClassName("chars")]; // Create array of character select elements.
+		selectors.forEach((x, y) => {
+			x.addEventListener("change", () => {  // Add event listener to each element using forEach.
+				const currentChars = selectors.map(x => x.value);  // Create array of currently selected character values.
+				for (let i = 0; i < selectors.length; i++){ // Iterate through char select elements to change currently selected to disabled.
+				const characterOptions = selectors[i].children;
+					if (i !== y){ // Only perform these changes on elements that did not trigger the event listener with change.
+						[...characterOptions].map((x) => { 
+							if (!currentChars.some(z => z === x.value)) // Remove disabled attribute if character is not currently selected by other element.
+								x.removeAttribute("disabled");
+						});
+						const currentSelection = characterOptions[x.value]; 
+						currentSelection.disabled = "true"; // Add disabled attribute for character option change that triggered event listener.
+					}
+				}
+			});
+		});
+	})()
+}
 
 $(document).ready(function(){
     if (ws != null) {
