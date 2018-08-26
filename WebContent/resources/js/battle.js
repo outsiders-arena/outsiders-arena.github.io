@@ -186,7 +186,7 @@ function sendEnergyTrade() {
 // ------ EVENT LISTENERS
 
 const handleEventListeners = {
-	preventMultipleSelection: (function() {
+	preventMultipleSelection: (() => {
 		const selectors = [...document.getElementsByClassName("chars")]; // Create array of character select elements.
 		selectors.forEach((x, y) => {
 			x.addEventListener("change", () => {  // Add event listener to each element using forEach.
