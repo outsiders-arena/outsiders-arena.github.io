@@ -44,27 +44,25 @@ body {
 }
 .ally {
     position: relative;
-    margin-bottom: 15%;
     width: 9vw;
 	height: 9vw;
     border: 2px solid black;
     background-color: #eee;
     margin-right: 5%;
 }
-.ally:first-of-type {
-    margin-top: 15%;
+.ally:last-of-type {
+    margin-bottom: 1vh;
 }
 .enemy {
     position: relative;
-    margin-bottom: 15%;
     width: 9vw;
 	height: 9vw;
     border: 2px solid black;
     background-color: #eee;
     margin-left: 5%;
 }
-.enemy:first-of-type {
-    margin-top: 15%;
+.enemy:last-of-type {
+    margin-bottom: 1vh;
 }
 .ally-ability-menu {
     display: flex;
