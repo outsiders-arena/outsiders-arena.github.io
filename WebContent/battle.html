@@ -23,15 +23,21 @@
 		</div>
 			
 		<div>
-			<input id="displayNameInput" placeholder="Display Name">
-			<input id="avatarUrlInput" placeholder="Avatar URL">
+			<input id="displayNameInput" 
+			placeholder="Display Name" 
+			onkeydown="if (event.keyCode === 13) document.getElementById('connectButton').click()" />
+			<input id="avatarUrlInput" 
+			placeholder="Avatar URL"
+			onkeydown="if (event.keyCode === 13) document.getElementById('connectButton').click()" />
+			<br />
 			<button id="connectButton" onclick="sendConnectRequest()">
 				Connect
-			</button>
+			</button type="button">
 		</div>
 		<br />
 		<div>
 			<input id="playerIdMatchMakingInput" placeholder="Opponent's Player ID">
+			<br />
 			<button id="findBattle" onclick="findBattle()">
 				Find Battle
 			</button>
