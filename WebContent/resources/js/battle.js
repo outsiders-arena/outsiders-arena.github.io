@@ -89,16 +89,16 @@ function sendConnectRequest() {
 
 const handlePortraits = (...arguments) => {
 	const frames = document.getElementsByClassName("ally");
-	const backgrounds = {
-		"0": "https://i.imgur.com/qh2cjpd.jpg",
-		"1": "https://i.imgur.com/yvQeY2q.png",
-		"2": "https://i.imgur.com/YCBrPWg.png",
-		"3": "https://i.imgur.com/uPWgaVl.jpg",
-		"4": "https://i.imgur.com/y2pJyrY.jpg"
-	};
+	const backgrounds = new Map([
+	[0, "https://i.imgur.com/qh2cjpd.jpg"], 
+	[1, "https://i.imgur.com/yvQeY2q.png"],
+	[2, "https://i.imgur.com/YCBrPWg.png"],
+	[3, "https://i.imgur.com/uPWgaVl.jpg"],
+	[4, "https://i.imgur.com/y2pJyrY.jpg"]
+	]);
 	for (let i = 0; i < frames.length; i++){
 		const portrait = document.createElement("img");
-		portrait.setAttribute("src", backgrounds[arguments[i]]);
+		portrait.setAttribute("src", backgrounds.get(arguments[i]));
 		portrait.style.maxHeight = "100%";
 		portrait.style.maxWidth = "100%";
 		frames[i].removeChild(frames[i].childNodes[1]);
@@ -140,7 +140,7 @@ function handleTurnEnd(msg) {
 // ------ SEND MESSAGES
 
 function sendMatchMakingMessage() {
-	const chars = [...document.getElementsByClassName("chars")].map(x => x.value);
+	const chars = [...document.getElementsByClassName("chars")].map(x => Number(x.value));
 	var playerId = $("#playerId").text().substring($("#playerId").text().length - 8, $("#playerId").text().length);
 	console.log(playerId);
 	console.log(chars);
