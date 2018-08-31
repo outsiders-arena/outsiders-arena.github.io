@@ -1,3 +1,5 @@
+"use strict";
+
 var ws = null;
 
 function findBattle() {
@@ -87,7 +89,7 @@ function sendConnectRequest() {
 	});
 }
 
-const handlePortraits = (...arguments) => {
+const handlePortraits = (...args) => {
 	const frames = document.getElementsByClassName("ally");
 	const backgrounds = new Map([
 	[0, "https://i.imgur.com/qh2cjpd.jpg"], 
@@ -98,7 +100,7 @@ const handlePortraits = (...arguments) => {
 	]);
 	for (let i = 0; i < frames.length; i++){
 		const portrait = document.createElement("img");
-		portrait.setAttribute("src", backgrounds.get(arguments[i]));
+		portrait.setAttribute("src", backgrounds.get(args[i]));
 		portrait.style.maxHeight = "100%";
 		portrait.style.maxWidth = "100%";
 		frames[i].removeChild(frames[i].childNodes[1]);

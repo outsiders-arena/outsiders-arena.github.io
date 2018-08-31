@@ -1,3 +1,5 @@
+"use strict";
+
 var ws = null;
 
 function connect() {
