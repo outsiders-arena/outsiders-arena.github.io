@@ -1,3 +1,4 @@
+"use strict";
 const PROD_URL = "";
 const STAGE_URL = "66.242.90.163:8171";
 const DEV_URL = "localhost:8817";
@@ -70,6 +71,25 @@ function sendConnectRequest() {
 	});
 }
 
+const handlePortraits = (...args) => {
+	const frames = document.getElementsByClassName("ally");
+	const backgrounds = new Map([
+	[0, "https://i.imgur.com/qh2cjpd.jpg"], 
+	[1, "https://i.imgur.com/yvQeY2q.png"],
+	[2, "https://i.imgur.com/YCBrPWg.png"],
+	[3, "https://i.imgur.com/uPWgaVl.jpg"],
+	[4, "https://i.imgur.com/y2pJyrY.jpg"]
+	]);
+	for (let i = 0; i < frames.length; i++){
+		const portrait = document.createElement("img");
+		portrait.setAttribute("src", backgrounds.get(args[i]));
+		portrait.style.maxHeight = "100%";
+		portrait.style.maxWidth = "100%";
+		frames[i].removeChild(frames[i].childNodes[1]);
+		frames[i].appendChild(portrait);
+	}
+}
+
 function afterLogin(result) {
 	$("#playerId").append(result.id);
 	console.log(result);
@@ -104,7 +124,7 @@ function handleTurnEnd(msg) {
 // ------ SEND MESSAGES
 
 function sendMatchMakingMessage() {
-	var chars = $("#chars").val()
+	const chars = [...document.getElementsByClassName("chars")].map(x => Number(x.value));
 	var playerId = $("#playerId").text().substring($("#playerId").text().length - 8, $("#playerId").text().length);
 	console.log("PlayerID: " + playerId);
 	console.log("Chars: " + chars);
@@ -119,8 +139,9 @@ function sendMatchMakingMessage() {
 		arenaId: arenaId,
 		opponentName: $("#playerNameMatchMakingInput").val().toString()
 	});
+  handlePortraits(msg.char1, msg.char2, msg.char3);
 	console.log(msg);
-	ws.send(msg);
+	ws.send(JSON.stringify(msg));
 }
 
 function sendTurnEnd() {
@@ -149,6 +170,29 @@ function sendEnergyTrade() {
     );
 }
 
+// ------ EVENT LISTENERS
+
+const handleEventListeners = {
+	preventMultipleSelection: (() => {
+		const selectors = Array.from(document.getElementsByClassName("chars")); // Create array of character select elements.
+		selectors.forEach((x, y) => {
+			x.addEventListener("change", () => {  // Add event listener to each element using forEach.
+				const currentChars = selectors.map(x => x.value);  // Create array of currently selected character values.
+				for (let i = 0; i < selectors.length; i++){ // Iterate through char select elements to change currently selected to disabled.
+				const characterOptions = selectors[i].children;
+					if (i !== y){ // Only perform these changes on elements that did not trigger the event listener with change.
+						Array.from(characterOptions, (x) => { 
+							if (!currentChars.some(z => z === x.value)) // Remove disabled attribute if character is not currently selected by other element.
+								x.removeAttribute("disabled");
+						});
+						const currentSelection = characterOptions[x.value]; 
+						currentSelection.disabled = "true"; // Add disabled attribute for character option change that triggered event listener.
+					}
+				}
+			});
+		});
+	})()
+}
 
 $(document).ready(function(){
     if (ws != null) {
