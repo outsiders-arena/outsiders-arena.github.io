@@ -1,7 +1,7 @@
 const PROD_URL = "";
 const STAGE_URL = "66.242.90.163:8171";
 const DEV_URL = "localhost:8817";
-const URL = DEV_URL;
+const URL = STAGE_URL;
 
 var ws = null;
 
