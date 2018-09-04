@@ -1,3 +1,4 @@
+"use strict";
 const PROD_URL = "";
 const STAGE_URL = "66.242.90.163:8171";
 const DEV_URL = "localhost:8817";
