@@ -126,13 +126,14 @@ function handleTurnEnd(msg) {
 // ------ SEND MESSAGES
 
 function sendMatchMakingMessage() {
-	const chars = [...document.getElementsByClassName("chars")].map(x => Number(x.value));
+	const chars2 = [...document.getElementsByClassName("chars")].map(x => Number(x.value));
+	var chars = $("#chars").val();
 	var playerId = $("#playerId").text().substring($("#playerId").text().length - 8, $("#playerId").text().length);
 	console.log("PlayerID: " + playerId);
 	console.log("Chars: " + chars);
 	var arenaId = $("#arenaId").text().substring($("#arenaId").text().length - 8, $("#arenaId").text().length);
 	console.log("ArenaID: " + arenaId);
-	var msg = JSON.stringify({
+	var msg = {
 		type: "MATCH_MAKING",
 		char1: chars[0],
 		char2: chars[1],
@@ -140,8 +141,8 @@ function sendMatchMakingMessage() {
 		playerId: playerId,
 		arenaId: arenaId,
 		opponentName: $("#playerNameMatchMakingInput").val().toString()
-	});
-  handlePortraits(msg.char1, msg.char2, msg.char3);
+	};
+	handlePortraits(msg.char1, msg.char2, msg.char3);
 	console.log(msg);
 	ws.send(JSON.stringify(msg));
 }
