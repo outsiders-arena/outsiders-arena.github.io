@@ -1,47 +1,33 @@
 "use strict";
+const PROD_URL = "";
+const STAGE_URL = "66.242.90.163:8171";
+const DEV_URL = "localhost:8817";
+const URL = DEV_URL;
 
 var ws = null;
 
 function findBattle() {
-	var playerId = $("#playerIdMatchMakingInput").val().toString() || "";
-	if (playerId.length > 0){
-		connectByPlayerId(playerId);
-	} else {
-		connect();
-	}
+	var opponentName = $("#playerNameMatchMakingInput").val() || "";
+	connectByPlayerName(opponentName);
 }
 
-function connectByPlayerId(id) {
-	
-	$.ajax({method: "GET", async: "FALSE", url: "http://66.242.90.163:8171/api/player/arena/" + id}).done(function(result) {
+function connectByPlayerName(name) {
+	var playerId = $("#playerId").text().substring($("#playerId").text().length - 8, $("#playerId").text().length);
+	console.log(playerId);
+	$.ajax({method: "GET", url: "http://"+ URL +"/api/player/arena/ " + playerId + "/" + name}).done(function(result) {
 		console.log(result);
 		var arenaId = result;
-		ws = new WebSocket('ws://66.242.90.163:8171/arena/' + arenaId);
-
-		console.log("Connected to Friend!");
-		console.log(ws);
-		handleMessage();
-		setTimeout(sendMatchMakingMessage, 5000);
+		connectByArenaId(arenaId);
 	});
 }
 
 function connectByArenaId(id) {
-	ws = new WebSocket('ws://66.242.90.163:8171/arena/' + id);
+	ws = new WebSocket('ws://'+ URL +'/arena/' + id);
 	$("#arenaId").append(id);
 	console.log("Connected to Friend!");
 	console.log(ws);
 	handleMessage();
-	setTimeout(sendMatchMakingMessage, 2500);
-}
-
-function connect() {
-	var arid = $("#arenaId").text();
-	var aid = arid.substring(arid.length - 7, arid.length);
-	ws = new WebSocket('ws://66.242.90.163:8171/arena/' + aid);
-	console.log("Connected");
-	console.log(ws);
-	handleMessage();
-	setTimeout(sendMatchMakingMessage, 2500);
+	setTimeout(sendMatchMakingMessage, 1000);
 }
 
 function disconnect() {
@@ -76,15 +62,11 @@ function handleMessage() {
 function sendConnectRequest() {
 	var disp = $("#displayNameInput").val().toString() || "NPC";
 	var aurl = $("#avatarUrlInput").val().toString() || "defaultImageUrl";
-	var arid = $("#arenaId").text();
-	var aid = arid.substring(arid.length - 7, arid.length);
-	console.log(aid);
 	var req = {
 			"displayName": disp,
-			"avatarUrl": aurl,
-			"currentArena": aid
+			"avatarUrl": aurl
 	};
-	$.ajax({method: "POST", url: "http://66.242.90.163:8171/api/player/", data: req}).done(function(result) {
+	$.ajax({method: "POST", url: "http://"+ URL +"/api/player/", data: req}).done(function(result) {
 		afterLogin(result);
 	});
 }
@@ -144,17 +126,20 @@ function handleTurnEnd(msg) {
 function sendMatchMakingMessage() {
 	const chars = [...document.getElementsByClassName("chars")].map(x => Number(x.value));
 	var playerId = $("#playerId").text().substring($("#playerId").text().length - 8, $("#playerId").text().length);
-	console.log(playerId);
-	console.log(chars);
-	var msg = {
+	console.log("PlayerID: " + playerId);
+	console.log("Chars: " + chars);
+	var arenaId = $("#arenaId").text().substring($("#arenaId").text().length - 8, $("#arenaId").text().length);
+	console.log("ArenaID: " + arenaId);
+	var msg = JSON.stringify({
 		type: "MATCH_MAKING",
 		char1: chars[0],
 		char2: chars[1],
 		char3: chars[2],
 		playerId: playerId,
-		opponentId: $("#playerIdMatchMakingInput").val().toString()
-	};
-	handlePortraits(msg.char1, msg.char2, msg.char3);
+		arenaId: arenaId,
+		opponentName: $("#playerNameMatchMakingInput").val().toString()
+	});
+  handlePortraits(msg.char1, msg.char2, msg.char3);
 	console.log(msg);
 	ws.send(JSON.stringify(msg));
 }
@@ -213,9 +198,6 @@ $(document).ready(function(){
     if (ws != null) {
     	disconnect();
     }
-    
-	var rand = Math.random().toString().substring(3, 9);
-	$("#arenaId").append(rand);
     
     $("select option").click(function() {
         if ($("select option:selected").length > 3) {
