@@ -201,8 +201,8 @@ $(document).ready(function(){
     	disconnect();
     }
     
-    $("select option").click(function() {
-        if ($("select option:selected").length > 3) {
+    $("#chars option").click(function() {
+        if ($("#chars option:selected").length > 3) {
             $(this).removeAttr("selected");
             alert('You can select up to 3 characters only');
         }

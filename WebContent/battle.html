@@ -14,16 +14,18 @@
 </head>
 <body id="bootstrap-override">
 	<div class="resource-manager">
+	
 		<div>
+			<span>
 			Arena ID:
-			<span id="arenaId">
 			</span>
-			<br />
+			<p id="arenaId"></p>
+			<span>
 			Player ID:
-			<span id="playerId">
 			</span>
+			<p id="playerId"></p>
 		</div>
-			
+		
 		<div>
 			<input id="displayNameInput" 
 			placeholder="Display Name" 
@@ -33,16 +35,29 @@
 			onkeydown="if (event.keyCode === 13) document.getElementById('connectButton').click()" />
 			<br />
 			<button id="connectButton" onclick="sendConnectRequest()">
-				Connect
-			</button type="button">
-		</div>
-		<br />
-		<div>
-			<input id="playerIdMatchMakingInput" placeholder="Opponent's Player ID">
-			<br />
-			<button id="findBattle" onclick="findBattle()">
-				Find Battle
+				CREATE PLAYER
 			</button>
+		</div>
+		
+		<div>
+			<select id="chars" multiple>
+				<option value="0">Alex</option>
+				<option value="1">Fainne</option>
+				<option value="2">Geddy</option>
+				<option value="3">Hollyanna</option>
+				<option value="4">Shinzo</option>
+			</select>
+		</div>
+		
+		<div>
+			<input id="playerNameMatchMakingInput" placeholder="enter your opponent's displayName">
+			<button id="findBattle" onclick="findBattle()">
+				FIND BATTLE
+			</button>
+		</div>
+		
+		<div id="arenaOutput">
+
 		</div>
 	</div>
 	<div class="ally-team">
@@ -103,47 +118,7 @@
 	</div>
 	<div class="empty-space">
 
-		<span>
-		Arena ID:
-		</span>
-		<p id="arenaId"></p>
-		<span>
-		Player ID:
-		</span>
-		<p id="playerId"></p>
 		
-		<div>
-			<input id="displayNameInput" placeholder="enter your display name">
-			<input id="avatarUrlInput" placeholder="enter an avatar URL">
-			<button id="connectButton" onclick="sendConnectRequest()">
-				CREATE PLAYER
-			</button>
-		</div>
-		
-		<div>
-			<select id="chars" multiple>
-				<option value="0">Alex</option>
-				<option value="1">Fainne</option>
-				<option value="2">Geddy</option>
-				<option value="3">Hollyanna</option>
-				<option value="4">Shinzo</option>
-			</select>
-		</div>
-		
-
-		
-		<div>
-			<input id="playerNameMatchMakingInput" placeholder="enter your opponent's displayName">
-			<button id="findBattle" onclick="findBattle()">
-				FIND BATTLE
-			</button>
-		</div>
-		
-		<div id="arenaOutput">
-
-
-
-		</div>
 
 	</div>
 	<div class="enemy-team">
