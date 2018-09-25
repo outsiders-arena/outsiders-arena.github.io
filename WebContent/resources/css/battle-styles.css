@@ -16,7 +16,44 @@ body {
 	align-items: center;
     background-color: darkgoldenrod;
     grid-column: 5 / 17;
-    grid-row: 1 / 3;
+    grid-row: 1 / 4;
+}
+.idDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkgoldenrod;
+    align-items: center;
+    grid-column: 5 / 17;
+    grid-row: 20 / 21;
+}
+.idDiv > :nth-child(1),
+.idDiv > :nth-child(3) {
+    font-weight: bold;
+}
+.playerBattleInfo {
+	display: flex;
+}
+.playerBattleInfo > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+#enemyInfo {
+	display: flex;
+}
+#enemyInfo > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+#energy {
+	display: flex;
+}
+#energy > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 .ally-team {
     display: flex;
@@ -25,11 +62,7 @@ body {
     align-items: flex-end;
     background-color: saddlebrown;
     grid-column: 2 / 5;
-    grid-row: 4 / 18;
-}
-.empty-space {
-	grid-column: 10 / 16;
-	grid-row: 4 / 20;
+    grid-row: 5 / 19;
 }
 .enemy-team { 
     display: flex;
@@ -38,7 +71,7 @@ body {
     align-items: flex-start;
     background-color: saddlebrown;
     grid-column: 17 / 20;
-    grid-row: 4 / 18;
+    grid-row: 5 / 19;
 }
 .ally {
     position: relative;
@@ -87,6 +120,7 @@ body {
     border: 2px solid black;
     background-color: green;
 	color: #eee;
+	user-select: none;
 }
 .healthbar p {
 	height: 50%;
