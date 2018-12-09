@@ -31,7 +31,7 @@
 					CREATE PLAYER
 				</button>
 			</div>
-			<div class="playerBattleInfo">
+			<div class="playerBattleInfo" style="visibility: hidden;">
 				<input id="playerNameMatchMakingInput" 
 				placeholder="Opponent's Name"
 				onkeydown="if (event.keyCode === 13) document.getElementById('findBattle').click()" />
@@ -65,13 +65,10 @@
 			</div>
 		</div>
 		<div class="ally-team">
+		
 			<div class="ally">
+			
 				<select class="chars">
-					<option value="0">Alex Drake</option>
-					<option value="1" disabled>Fainne Uron</option>
-					<option value="2" disabled>Geddy Splintwalker</option>
-					<option value="3">Hollyanna Knox</option>
-					<option value="4">Shinzo Katetsu</option>
 				</select>
 				<div class="healthbar">
 					<p>100/100</p> 
@@ -82,14 +79,13 @@
 					<div class="ally-ability"></div>
 					<div class="ally-ability"></div>
 				</div>
+				<div class="ally-ability-menu-desc" id="ally-ability-menu-0" hidden="true">
+
+				</div>
 			</div>
+			
 			<div class="ally">
 				<select class="chars">
-					<option value="0" disabled>Alex Drake</option>
-					<option value="1">Fainne Uron</option>
-					<option value="2" disabled>Geddy Splintwalker</option>
-					<option value="3">Hollyanna Knox</option>
-					<option value="4">Shinzo Katetsu</option>
 				</select>
 				<div class="healthbar">
 					<p>100/100</p>
@@ -100,14 +96,13 @@
 					<div class="ally-ability"></div>
 					<div class="ally-ability"></div>
 				</div>
+				<div class="ally-ability-menu-desc" id="ally-ability-menu-1" hidden="true">
+
+				</div>
 			</div>
+			
 			<div class="ally">
 				<select class="chars">
-					<option value="0" disabled>Alex Drake</option>
-					<option value="1" disabled>Fainne Uron</option>
-					<option value="2">Geddy Splintwalker</option>
-					<option value="3">Hollyanna Knox</option>
-					<option value="4">Shinzo Katetsu</option>
 				</select>
 				<div class="healthbar">
 					<p>100/100</p>
@@ -117,9 +112,13 @@
 					<div class="ally-ability"></div>
 					<div class="ally-ability"></div>
 					<div class="ally-ability"></div>
+				</div>
+				<div class="ally-ability-menu-desc" id="ally-ability-menu-2" hidden="true">
+
 				</div>
 			</div>
 		</div>
+		
 		<div class="empty-space">
 
 
@@ -140,6 +139,17 @@
 					<p>100/100</p>
 				</div>
 			</div>
+		</div>
+		
+		<div id="moveDiv">
+			<button id="moveLeft" onclick="moveLeft()" disabled>LEFT
+			</button>
+			<span>
+			Moves: (Order Left To Right)
+			</span>
+			<button id="moveRight" onclick="moveRight()" disabled>RIGHT
+			</button>
+			<button id="moveCancel" onclick="moveCancel()" disabled>X</button>
 		</div>
 
 		<div class="idDiv">
